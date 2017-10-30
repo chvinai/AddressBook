@@ -21,9 +21,9 @@ node {
      stage('DeployToServer') {
 	 }
 	 
-	 post {
-			always {
-				archive 'dist/*.war'		
-			}
-		} 
+	 post { 
+        always { 
+            archive 'dist/*.war'
+        }
+    }
 } 
