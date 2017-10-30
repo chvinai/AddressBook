@@ -1,7 +1,9 @@
-node {
-   def mvnHome
-   def version 
-   stage('Preparation') {
+pipeline {
+	def mvnHome
+    def version
+    agent any
+    stages {
+        stage('Preparation') {
       git 'https://github.com/SeshagiriSriram/addressbook.git'
       mvnHome = tool 'maven3'
 	  version = '3.3.9' 
@@ -20,10 +22,10 @@ node {
    }
      stage('DeployToServer') {
 	 }
-	 
-	 post { 
+    }
+    post { 
         always { 
-            archive 'dist/*.war'
+            echo 'I will always say Hello again!'
         }
     }
-} 
+}
