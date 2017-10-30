@@ -1,9 +1,7 @@
 pipeline {
-	def mvnHome
-    def version
-    agent any
+	agent any
     stages {
-        stage('Preparation') {
+      stage('Preparation') {
       git 'https://github.com/SeshagiriSriram/addressbook.git'
       mvnHome = tool 'maven3'
 	  version = '3.3.9' 
