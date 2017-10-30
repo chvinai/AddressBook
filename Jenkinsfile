@@ -19,5 +19,11 @@ node {
       archive 'target/*.jar'
    }
      stage('DeployToServer') {
-	 } 
+	 }
+	 
+	 post {
+			always {
+				archive 'dist/*.war'		
+			}
+		} 
 } 
