@@ -19,5 +19,6 @@ node {
       archive 'target/*.jar'
    }
 	 stage('DeployToServer') {
+	 	echo 'Deploy to server completed....'
 	 }
 } 
