@@ -2,8 +2,8 @@ node {
    def mvnHome
    def version 
    stage('Preparation') {
-      git 'https://github.com/SeshagiriSriram/addressbook.git'
-      mvnHome = tool 'maven3'
+      git 'https://github.com/SterlingTraining/addressbook.git'
+      mvnHome = tool 'maven4'
 	  version = '3.3.9' 
    }
    stage('Build') {
@@ -18,6 +18,6 @@ node {
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'target/*.jar'
    }
-     stage('DeployToServer') {
+	 stage('DeployToServer') {
 	 }
 } 
