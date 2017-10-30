@@ -7,19 +7,12 @@ node {
 	  version = '3.3.9' 
    }
    stage('Build') {
-        withMaven(
-        maven: 'maven3', // Maven installation declared in the Jenkins "Global Tool Configuration"
-        mavenSettingsConfig: 'settings.xml', // Maven settings.xml file defined with the Jenkins Config File Provider Plugin
-        mavenLocalRepo: 'd:/repos') {
-
+      // Run the maven build
       if (isUnix()) {
-         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore test -Pfunctional-test -DSkipUTs=true -DskipTests=true"
+         sh "'${mvnHome}/bin/mvn' clean package"
       } else {
-         bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore test -Pfunctional-test -DSkipUTs=true -DskipTests=true/)
+         bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       }
-    } // withMaven will discover the generated Maven artifacts, JUnit reports and FindBugs reports
-    
-
    }
    stage('Results') {
       junit '**/target/surefire-reports/TEST-*.xml'
