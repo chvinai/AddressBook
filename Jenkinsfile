@@ -3,7 +3,7 @@ node {
    def version 
    stage('Preparation') {
       git 'https://github.com/SterlingTraining/addressbook.git'
-      mvnHome = tool 'maven4'
+      mvnHome = tool 'maven3'
 	  version = '3.3.9' 
    }
    stage('Build') {
